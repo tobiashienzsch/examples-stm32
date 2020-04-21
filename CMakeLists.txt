@@ -15,18 +15,10 @@ set(CMAKE_ARCHIVE_OUTPUT_DIRECTORY ${CMAKE_BINARY_DIR}/lib)
 set(CMAKE_LIBRARY_OUTPUT_DIRECTORY ${CMAKE_BINARY_DIR}/lib)
 set(CMAKE_RUNTIME_OUTPUT_DIRECTORY ${CMAKE_BINARY_DIR}/bin)
 
-set(CPU_FLAGS " -mthumb -mcpu=cortex-m3 -march=armv7-m -mfloat-abi=soft")
-set(COMPILER_FLAGS "-ffreestanding -ffunction-sections -fdata-sections -fsigned-char -fmessage-length=0 -fshort-enums")
 set(STM_HAL_SDK "${CMAKE_CURRENT_LIST_DIR}/3rd_party/STM32CubeF1")
 set(LINKER_FILE "${CMAKE_CURRENT_LIST_DIR}/linker_scripts/STM32F103VBIx_FLASH.ld")
 
-if("${CMAKE_C_COMPILER_ID}" STREQUAL "Clang")
-    string(APPEND CPU_FLAGS " --target=arm-none-eabi")
-endif()
-
-add_definitions(${CPU_FLAGS} ${COMPILER_FLAGS})
-
-string(APPEND CMAKE_EXE_LINKER_FLAGS " ${CPU_FLAGS} -Wl,-T ${LINKER_FILE}")
+string(APPEND CMAKE_EXE_LINKER_FLAGS " -Wl,-T ${LINKER_FILE}")
 string(APPEND CMAKE_EXE_LINKER_FLAGS " -Wl,--gc-sections")
 
 include(cmake/utils.cmake)

@@ -34,7 +34,14 @@ set(CMAKE_FIND_ROOT_PATH_MODE_PROGRAM NEVER)
 set(CMAKE_FIND_ROOT_PATH_MODE_LIBRARY ONLY)
 set(CMAKE_FIND_ROOT_PATH_MODE_INCLUDE ONLY)
 
-# Optimizations
+set(CPU_FLAGS " -mthumb -mcpu=cortex-m3 -march=armv7-m -mfloat-abi=soft")
+set(COMPILER_FLAGS "-ffreestanding -ffunction-sections -fdata-sections -fsigned-char -fmessage-length=0 -fshort-enums")
+
+set(CMAKE_C_FLAGS             "${CPU_FLAGS} ${COMPILER_FLAGS}" CACHE INTERNAL "c compiler flags")
+set(CMAKE_CXX_FLAGS           "${CPU_FLAGS} ${COMPILER_FLAGS}" CACHE INTERNAL "cxx compiler flags")
+set(CMAKE_ASM_FLAGS           "${CPU_FLAGS}" CACHE INTERNAL "asm compiler flags")
+set(CMAKE_EXE_LINKER_FLAGS    "${CPU_FLAGS}" CACHE INTERNAL "linker flags release")
+
 set(CMAKE_C_FLAGS_DEBUG             "-Og -g -DDEBUG" CACHE INTERNAL "c compiler flags debug")
 set(CMAKE_CXX_FLAGS_DEBUG           "-Og -g -DDEBUG" CACHE INTERNAL "cxx compiler flags debug")
 set(CMAKE_ASM_FLAGS_DEBUG           "-g" CACHE INTERNAL "asm compiler flags debug")

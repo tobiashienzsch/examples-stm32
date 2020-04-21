@@ -37,15 +37,22 @@ set(CMAKE_FIND_ROOT_PATH_MODE_PROGRAM NEVER)
 set(CMAKE_FIND_ROOT_PATH_MODE_LIBRARY ONLY)
 set(CMAKE_FIND_ROOT_PATH_MODE_INCLUDE ONLY)
 
-# Optimizations
+set(CPU_FLAGS "--target=arm-none-eabi -mthumb -mcpu=cortex-m3 -march=armv7-m -mfloat-abi=soft")
+set(COMPILER_FLAGS "-ffreestanding -ffunction-sections -fdata-sections -fsigned-char -fmessage-length=0 -fshort-enums")
+
+set(CMAKE_C_FLAGS             "${CPU_FLAGS} ${COMPILER_FLAGS}" CACHE INTERNAL "c compiler flags")
+set(CMAKE_CXX_FLAGS           "${CPU_FLAGS} ${COMPILER_FLAGS}" CACHE INTERNAL "cxx compiler flags")
+set(CMAKE_ASM_FLAGS           "${CPU_FLAGS}" CACHE INTERNAL "asm compiler flags")
+set(CMAKE_EXE_LINKER_FLAGS    "${CPU_FLAGS}" CACHE INTERNAL "linker flags release")
+
 set(CMAKE_C_FLAGS_DEBUG             "-flto -Og -ggdb3 -DDEBUG" CACHE INTERNAL "c compiler flags debug")
 set(CMAKE_CXX_FLAGS_DEBUG           "-flto -Og -ggdb3 -DDEBUG" CACHE INTERNAL "cxx compiler flags debug")
-set(CMAKE_ASM_FLAGS_DEBUG           "-flto -ggdb3" CACHE INTERNAL "asm compiler flags debug")
+set(CMAKE_ASM_FLAGS_DEBUG           "" CACHE INTERNAL "asm compiler flags debug")
 set(CMAKE_EXE_LINKER_FLAGS_DEBUG    "-fuse-ld=lld -flto" CACHE INTERNAL "linker flags debug")
 
 set(CMAKE_C_FLAGS_RELEASE           "-flto -Oz -DNDEBUG " CACHE INTERNAL "c compiler flags release")
 set(CMAKE_CXX_FLAGS_RELEASE         "-flto -Oz -DNDEBUG " CACHE INTERNAL "cxx compiler flags release")
-set(CMAKE_ASM_FLAGS_RELEASE         "-flto" CACHE INTERNAL "asm compiler flags release")
+set(CMAKE_ASM_FLAGS_RELEASE         "" CACHE INTERNAL "asm compiler flags release")
 set(CMAKE_EXE_LINKER_FLAGS_RELEASE  "-fuse-ld=lld -flto" CACHE INTERNAL "linker flags release")
 
 string(APPEND CMAKE_EXE_LINKER_FLAGS " -nostdlib")
