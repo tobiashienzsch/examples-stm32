@@ -70,8 +70,9 @@ static uint16_t Buffercmp(uint8_t* pBuffer1, uint8_t* pBuffer2, uint16_t BufferL
  * @param  None
  * @retval None
  */
-int main(void)
+extern "C" int main(void)
 {
+    constexpr auto x = 1;
     /* STM32F103xB HAL library initialization:
          - Configure the Flash prefetch
          - Systick timer is configured by default as source of time base, but user

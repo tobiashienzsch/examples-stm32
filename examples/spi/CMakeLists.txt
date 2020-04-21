@@ -10,7 +10,7 @@ if ("${CMAKE_C_COMPILER_ID}" STREQUAL "Clang")
     list(APPEND spi_test_obj ${ARM_TOOLCHAIN_DIR}/../lib/gcc/arm-none-eabi/9.2.1/thumb/v7-m/nofp/crti.o)
 endif()
 
-add_executable(${PROJECT_NAME} Src/main.c ${spi_test_obj})
+add_executable(${PROJECT_NAME} Src/main.cpp ${spi_test_obj})
 target_link_libraries(${PROJECT_NAME} spi_startup spi_system)
 
 firmware_size(${PROJECT_NAME})

@@ -5,7 +5,6 @@ project(stm32-examples ASM C CXX)
 # and not if it is included through add_subdirectory
 if(CMAKE_PROJECT_NAME STREQUAL PROJECT_NAME)
     set(CMAKE_EXPORT_COMPILE_COMMANDS ON)
-    set(CMAKE_VERBOSE_MAKEFILE ON CACHE BOOL "ON")
     set(CMAKE_EXECUTABLE_SUFFIX ".elf")
     
     set(CMAKE_C_STANDARD 11)
