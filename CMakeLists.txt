@@ -5,8 +5,8 @@ set(CMAKE_EXPORT_COMPILE_COMMANDS ON)
 set(CMAKE_VERBOSE_MAKEFILE ON CACHE BOOL "ON")
 
 set(CMAKE_EXECUTABLE_SUFFIX ".elf")
-set(CMAKE_C_COMPILER_TARGET thumbv7m-unknown-none-eabi)
-set(CMAKE_CXX_COMPILER_TARGET thumbv7m-unknown-none-eabi)
+#set(CMAKE_C_COMPILER_TARGET thumbv7m-unknown-none-eabi)
+#set(CMAKE_CXX_COMPILER_TARGET thumbv7m-unknown-none-eabi)
 
 set(CMAKE_C_STANDARD 11)
 set(CMAKE_C_STANDARD_REQUIRED ON)
@@ -38,4 +38,5 @@ include(cmake/utils.cmake)
 
 add_subdirectory(stm32-hal)
 add_subdirectory(examples/gpio)
+add_subdirectory(examples/uart)
 
