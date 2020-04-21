@@ -23,3 +23,7 @@ build:
 .PHONY: clean
 clean:
 	rm -rf $(BUILD_DIR)
+
+.PHONY: format
+format:
+	find examples -iname '*.h' -o -iname '*.c'  -o -iname '*.hpp'  -o -iname '*.cpp' | xargs clang-format -i
