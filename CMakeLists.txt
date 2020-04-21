@@ -34,9 +34,9 @@ string(APPEND CMAKE_EXE_LINKER_FLAGS " ${CPU_FLAGS} -Wl,-T ${LINKER_FILE}")
 string(APPEND CMAKE_EXE_LINKER_FLAGS " -Wl,--gc-sections")
 
 include(cmake/utils.cmake)
-#include(cmake/stm32.cmake)
+include(cmake/stm32.cmake)
 
-add_subdirectory(stm32-hal)
+#add_subdirectory(stm32-hal)
 add_subdirectory(examples/gpio)
 add_subdirectory(examples/uart)
 

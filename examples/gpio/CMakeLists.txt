@@ -2,9 +2,8 @@ project(gpio)
 
 add_library(startup Src/startup_stm32f103xb.s)
 add_library(system Src/system_stm32f1xx.c Src/stm32f1xx_it.c)
-target_link_libraries(system PUBLIC stm32::HAL)
-
-#create_stm32_hal_target(stm32hal)
+create_stm32_hal_target(gpio_stm32hal)
+target_link_libraries(system PUBLIC gpio_stm32hal)
 
 if ("${CMAKE_C_COMPILER_ID}" STREQUAL "Clang")
     list(APPEND gpio_test_obj ${ARM_TOOLCHAIN_DIR}/../arm-none-eabi/lib/thumb/v7-m/nofp/crt0.o)
