@@ -25,5 +25,6 @@ include(cmake/utils.cmake)
 include(cmake/stm32.cmake)
 
 add_subdirectory(examples/gpio)
+add_subdirectory(examples/spi)
 add_subdirectory(examples/uart)
 
